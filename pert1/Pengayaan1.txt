@@ -7,3 +7,10 @@ Apa yang terjadi jika kita mencoba mengubah nilai suatu konstanta setelah objek 
 Bagaimana cara mendefinisikan konstanta dalam bahasa Java?
 
 Jawaban
+1. Fungsi (Function): method yang mengembalikan nilai.
+Prosedur (Procedure): method yang tidak mengembalikan nilai, hanya melakukan aksi.
+2. Konstanta adalah variabel yang nilainya tetap setelah diinisialisasi.
+Keuntungan: Mencegah perubahan nilai secara tidak sengaja, Membuat kode lebih mudah dipahami.
+3. Jika mencoba mengubah konstanta (final), Java akan menolak dengan error saat compile-time.
+contoh: Pengguna.faktorAktivitas = 1.5; // Error: cannot assign a value to final variable faktorAktivitas
+4. Gunakan keyword final untuk mendefinisikan konstanta. Biasanya juga digabung dengan static jika konstanta bersifat kelas (sama untuk semua objek).

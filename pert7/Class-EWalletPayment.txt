@@ -1,17 +1,41 @@
-public class EWalletPayment implements PaymentMethod {
+class EWalletPayment implements PaymentMethod {
 
-    // TODO: Buat atribut yang diperlukan, misalnya:
-    // - nama penyedia layanan (contoh: Dana, OVO, Gopay)
-    // - jumlah saldo
-    // - nominal transaksi
+    private String namaLayanan;
+    private double nominalPembayaran;
+    private double saldo;
 
-    // TODO: Buat constructor untuk mengisi nilai atribut
+    public EWalletPayment(String namaLayanan, double nominalPembayaran, double saldo) {
+        this.namaLayanan = namaLayanan;
+        this.nominalPembayaran = nominalPembayaran;
+        this.saldo = saldo;
+    }
 
-    // TODO: Implementasikan semua method yang ada pada interface PaymentMethod
+    @Override
+    public void processPayment() {
+        System.out.print("Memproses pembayaran sebesar " + nominalPembayaran + "...");
 
-    // Catatan:
-    // - Pada method processPayment(), lakukan pengecekan kecukupan saldo
-    // - Jika saldo cukup, kurangi saldo lalu tampilkan pesan berhasil
-    // - Jika saldo tidak cukup, tampilkan pesan gagal
+        double totalBiaya = nominalPembayaran + getTransactionFee();
 
+        if (saldo >= totalBiaya) {
+            saldo -= totalBiaya;
+            System.out.println("Pembayaran berhasil!");
+        } else {
+            System.out.println("Pembayaran gagal! Saldo tidak cukup.");
+        }
+    }
+
+    @Override
+    public String getPaymentDetails() {
+        return "Pembayaran dilakukan melalui " + namaLayanan;
+    }
+
+    @Override
+    public double getTransactionFee() {
+        return 2000;
+    }
+
+    @Override
+    public double getBalance() {
+        return saldo;
+    }
 }

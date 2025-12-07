@@ -1,55 +1,37 @@
 public abstract class KendaraanGalaksi {
+    private String namaKendaraan;
+    private int levelEnergi;
+    private int kapasitasPenumpang;
 
-    // ==========================================================
-    // ATRIBUT/STATE (semua private)
-    // ==========================================================
+    public KendaraanGalaksi(String namaKendaraan, int kapasitasPenumpang) {
+        this.namaKendaraan = namaKendaraan;
+        this.kapasitasPenumpang = kapasitasPenumpang;
+        this.levelEnergi = 100;
+    }
 
-    // TODO:
-    // - String namaKendaraan
-    // - int levelEnergi         (0–100)
-    // - int kapasitasPenumpang
+    public String getNamaKendaraan() {
+        return namaKendaraan;
+    }
 
+    public int getLevelEnergi() {
+        return levelEnergi;
+    }
 
-    // ==========================================================
-    // CONSTRUCTOR
-    // ==========================================================
+    public int getKapasitasPenumpang() {
+        return kapasitasPenumpang;
+    }
 
-    // TODO:
-    // Constructor menerima:
-    //   - namaKendaraan
-    //   - kapasitasPenumpang
-    // levelEnergi default = 100.
+    protected void setLevelEnergi(int energi) {
+        if (energi > 100) this.levelEnergi = 100;
+        else if (energi < 0) this.levelEnergi = 0;
+        else this.levelEnergi = energi;
+    }
 
+    public final void tampilStatus() {
+        System.out.println(namaKendaraan + " | Energi: " + levelEnergi + "% | Kapasitas: " + kapasitasPenumpang + " orang");
+    }
 
-    // ==========================================================
-    // GETTER
-    // ==========================================================
-
-    // TODO: Getter namaKendaraan
-    // TODO: Getter levelEnergi
-    // TODO: Getter kapasitasPenumpang
-
-
-    // ==========================================================
-    // METHOD BIASA
-    // ==========================================================
-
-    // TODO:
-    // Method final tampilStatus()
-    // Format:
-    // "[namaKendaraan] | Energi: [levelEnergi]% | Kapasitas: [kapasitasPenumpang] awak"
-
-
-    // ==========================================================
-    // ABSTRACT METHOD (WAJIB DIIMPLEMENTASI SUBCLASS)
-    // ==========================================================
-
-    // TODO:
-    // abstract void aktifkanMesin();
-
-    // TODO:
-    // abstract void jelajah(int jarak);
-
-    // TODO:
-    // abstract void isiEnergi(int jumlah);
+    public abstract void aktifkanMesin();
+    public abstract void jelajah(int jarak);
+    public abstract void isiEnergi(int jumlah);
 }
